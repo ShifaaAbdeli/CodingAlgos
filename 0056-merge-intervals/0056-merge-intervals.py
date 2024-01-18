@@ -10,3 +10,5 @@ class Solution:
             else:
                 output.append([start, end])
         return output
+
+     ### Time complexity: O(nlog(n)). Space complexity: O(n)
