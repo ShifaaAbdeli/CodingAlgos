@@ -11,4 +11,5 @@ class Solution:
                 prevEnd = min(end, prevEnd)
                 
         return res
+    ## Time complexity: O(nlog(n)), Space: O(1)
         
