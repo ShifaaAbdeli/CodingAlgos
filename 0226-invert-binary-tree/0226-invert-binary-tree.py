@@ -6,6 +6,8 @@
 #         self.right = right
 class Solution:
     def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        
+        """ BFS Approach
         if root is None:
             return root
 
@@ -18,13 +20,13 @@ class Solution:
             if p.right:    
                 deq.append(p.right)
         return root
-
-        # Recursive approch
-        # if root is None:
-        #   return root
-        # p.left, p.right = p.right, p.left
-        # if p.left is not None:
-        #   invesTree(p.left)
-        # if p.right is not None:
-        #    inversTree(p.right)
-        # return root
+        """
+        # DFS Recursive approch
+        if root is None:
+           return root
+        root.left, root.right = root.right, root.left
+        if root.left is not None:
+            self.invertTree(root.left)
+        if root.right is not None:
+            self.invertTree(root.right)
+        return root
