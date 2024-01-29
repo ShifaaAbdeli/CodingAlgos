@@ -1,26 +1,34 @@
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
-class Solution:
-    def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
-        if not subRoot:
-            return True
-        if not root:
-            return False
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func sameTree(root *TreeNode, subRoot *TreeNode) bool {
+    
+    if (root == nil) && (subRoot == nil) {
+        return true
+    }
+    if (root != nil && subRoot != nil && (root.Val == subRoot.Val)) {
+        return (sameTree(root.Left, subRoot.Left) && 
+                sameTree(root.Right, subRoot.Right))
+    }
+    return false
+}
 
-        def sameTree(self, s, t):
-            if not s and not t:
-                return True
-            if s and t and s.val == t.val:
-                return (sameTree(self, s.left, t.left) and
-                       sameTree(self, s.right, t.right))
-            return False
-        
-        if sameTree(self, root, subRoot):
-            return True
-        return (self.isSubtree(root.left, subRoot) or
-            self.isSubtree(root.right, subRoot))
-        
+func isSubtree(root *TreeNode, subRoot *TreeNode) bool {
+    
+    if subRoot == nil {
+        return true
+    }
+    if root == nil {
+        return false
+    }
+    if sameTree(root, subRoot) {
+        return true
+    }
+    return (isSubtree(root.Left, subRoot) || 
+            isSubtree(root.Right, subRoot))
+}
