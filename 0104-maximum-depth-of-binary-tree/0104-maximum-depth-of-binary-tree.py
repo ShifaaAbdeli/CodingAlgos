@@ -7,6 +7,7 @@
 class Solution:
     def maxDepth(self, root: Optional[TreeNode]) -> int:
 
+        """
         if root is None:
             return 0
 
@@ -34,4 +35,13 @@ class Solution:
                 depth_right += 1
                 node = node.right
         return max(depth_left, depth_right)+1
+        """
+        ## First Approach DFS recursive:
+        #  - Compute the left subtree depht and 
+        #    right subtree deepth.
+        #    return max of the above + 1.
+        
+        if not root:
+            return 0
+        return 1 + max(self.maxDepth(root.left),                                        self.maxDepth(root.right))
         
