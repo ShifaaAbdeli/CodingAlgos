@@ -36,12 +36,34 @@ class Solution:
                 node = node.right
         return max(depth_left, depth_right)+1
         """
-        ## First Approach DFS recursive:
+        ##### First Approach DFS recursive:  ####
         #  - Compute the left subtree depht and 
         #    right subtree deepth.
         #    return max of the above + 1.
-        
+        #  - Time complexity: O(n), Space: O(log(n)), worst O(n)        
+        """
         if not root:
             return 0
         return 1 + max(self.maxDepth(root.left),                                        self.maxDepth(root.right))
+        """
         
+        ##### Second Approach DFS Iteratif:   ###
+        #  - Use stack for (node and depth)
+        #  - Conpute the depth of each node
+        #  - Maintine the res as the max depth of nodes
+        #  - return result
+        #  - Time complexity: O(n), Space: O(1)
+
+        if not root:
+            return 0
+        
+        stack = [[root, 1]]
+        res = 1
+        
+        while stack:
+            node, depth = stack.pop()
+            if node:
+                res = max(res, depth)
+                stack.append((node.left, depth+1))
+                stack.append((node.right, depth+1))
+        return res
