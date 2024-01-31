@@ -54,11 +54,12 @@ class Solution:
         #  - return result
         #  - Time complexity: O(n), Space: O(1)
 
-        if not root:
-            return 0
+        #if not root:
+        #    return 0
         
         stack = [[root, 1]]
-        res = 1
+        #res = 1
+        res = 0
         
         while stack:
             node, depth = stack.pop()
