@@ -29,6 +29,7 @@ class Solution:
         
         return dummy.next
         
+## Time complexity: O(n), Space:O(1)
             
             
             
