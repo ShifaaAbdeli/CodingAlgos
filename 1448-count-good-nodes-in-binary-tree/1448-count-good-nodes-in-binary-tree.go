@@ -25,3 +25,5 @@ func dfsHelper(node *TreeNode, maxVal int) int {
 func goodNodes(root *TreeNode) int {
     return dfsHelper(root, root.Val)
 }
+
+// Time Complexity: O(n). Space Complexity: O(1)
