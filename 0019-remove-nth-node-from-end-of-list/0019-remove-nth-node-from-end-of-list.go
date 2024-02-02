@@ -1,36 +1,38 @@
-# Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
-class Solution:
-    def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
-        # USE TWO POINTERS APPROACH
-        
-        # use a dummy ptr: dummy --> head --> 1 --> 2 --> 3 --> 4 
-        dummy = ListNode(0, head)
-        
-        left, right = dummy, head
-        
-        # Move right ptr to get to offset+1 from the
-        # left since left is initialy pointing to dummy:
-        # ptr: left <-- n+1 --> right.
-        while n > 0 and right:
-            right = right.next
-            n -= 1
-            
-        # When right ptr is at null ptr, left is at Nth-1 element    
-        while right:
-            left = left.next
-            right = right.next
-        
-        # Delete the Nth element
-        left.next = left.next.next
-        
-        return dummy.next
-        
-## Time complexity: O(n), Space:O(1)
-            
-            
-            
-        
+/**
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+ */
+func removeNthFromEnd(head *ListNode, n int) *ListNode {
+    /*
+       - Use two pointer approach:
+         - Two ptrs left and right and maintine the offset between 
+           of n between them.
+         - 
+       
+    */
+    dummy := &ListNode{Next: head}
+    
+    //The above left init to dummy to make sure
+    //we stop at nth -1 element
+    left, right := dummy, head 
+
+    // Create the offset of n between left and right ptrs
+    //for i := 0; i < n; i++ {
+    for n > 0 && right != nil {
+        right = right.Next
+        n--
+    }
+    
+    for right != nil {
+        left = left.Next
+        right = right.Next
+    }
+    left.Next = left.Next.Next
+    
+    return dummy.Next
+    
+}
+// Time complexity O(n), space: O(1)
