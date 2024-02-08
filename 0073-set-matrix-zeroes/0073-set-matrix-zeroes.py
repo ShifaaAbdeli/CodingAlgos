@@ -57,21 +57,16 @@ class Solution:
             for c in range(1, COL):
                 if matrix[0][c] == 0 or matrix[r][0] == 0:
                     matrix[r][c] = 0
-                  
+
+        # Process first col, col zero          
         if matrix[0][0] == 0:
             for r in range(ROW):
                 matrix[r][0] = 0
                 
+        # Process first row, row zero       
         if rowZero == True:
             for c in range(COL):
                 matrix[0][c] = 0
-    """               
-        [[0,1,2,0],
-         [3,4,5,2],
-         [1,3,1,5]]
-        
-        [[0,1,2,0],
-         [0,0,0,2],
-         [0,0,0,5]]  
-    """
+
+        ## Time complexity: O(nxm), Space: O(1)
                     
