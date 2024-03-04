@@ -23,7 +23,8 @@ class Solution:
             copy = Node(cur.val)
             oldToCopy[cur] = copy
             cur = cur.next
-            
+           
+        # Build copy of next and random
         cur = head
         while cur:
             copy = oldToCopy[cur]
