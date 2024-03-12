@@ -1,7 +1,8 @@
 """
  - nums = [2,3,-2,4]
 
- BF. :  
+ BF. :
+ =====
  Multiplay the subarray element from a loop on the array and keep the max
       largProd = 0
       loop x in range(len(nums)):
@@ -12,6 +13,7 @@
       - Time Complexity: O(n^2), space: O(1)
       
  Dynamic Programming:
+ ===================
  - nums = [2,3,-2,4]
  
            [2]
@@ -33,6 +35,7 @@
         curMin = min(tempMax, curMin, n) = 2
  
  Second Approach:
+ ===============
     pre = 1
     surf = 1
     maxSubArr = INT_MIN
@@ -54,7 +57,7 @@ class Solution:
     def maxProduct(self, nums: List[int]) -> int:
         pref = 1
         surff = 1
-        maxSubArr = min(nums)
+        maxSubArr = max(nums)
         ARR = len(nums)
         
         for i in range(ARR):
