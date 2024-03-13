@@ -1,36 +1,26 @@
 /**
  * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
  */
-class Solution {
-public:
-    TreeNode* invertTree(TreeNode* root) {
+func invertTree(root *TreeNode) *TreeNode {
         
-        struct TreeNode* tmp;
-    
-        if (root == NULL) {
-            return root;
-        }
-    
-        tmp = root->left;
-        root->left = root->right;
-        root->right = tmp;
-    
-        if (root->left) {
-            invertTree(root->left);
-        }
-        if (root->right) {
-            invertTree(root->right);
-        }
-        
-        return root;
-    
+    if (root == nil) {
+        return root
     }
-};
+    
+    root.Left, root.Right = root.Right, root.Left
+    
+    if (root.Left != nil) {
+        invertTree(root.Left)
+    }
+    if (root.Right != nil) {
+        invertTree(root.Right)
+    }
+        
+    return root
+    
+}
