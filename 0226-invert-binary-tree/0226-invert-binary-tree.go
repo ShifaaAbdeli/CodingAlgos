@@ -22,5 +22,6 @@ func invertTree(root *TreeNode) *TreeNode {
     }
         
     return root
-    
 }
+
+// Time complexity: O(n); Space Complexity: O(1)
