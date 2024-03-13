@@ -38,15 +38,13 @@ class Solution:
             return root
         
         head = root
-        tmp = root.left
-        root.left = root.right
-        root.right = tmp
+        root.left, root.right = root.right, root.left
         
         if root.left:
             self.invertTree(root.left)
         if root.right:
             self.invertTree(root.right)
             
-        return head
+        return root
         
         
