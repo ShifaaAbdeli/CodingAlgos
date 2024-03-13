@@ -37,7 +37,6 @@ class Solution:
         if not root or root == []:
             return root
         
-        head = root
         root.left, root.right = root.right, root.left
         
         if root.left:
