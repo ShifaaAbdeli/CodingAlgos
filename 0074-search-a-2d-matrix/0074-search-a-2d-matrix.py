@@ -18,8 +18,8 @@ class Solution:
             else:
                 break
                 
-   #     if not (top <= bot):
-  #          return False
+        if not (top <= bot):
+            return False
         
         ## row where target is possibly located
         row = (top + bot) // 2
