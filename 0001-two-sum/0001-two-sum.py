@@ -7,4 +7,5 @@ class Solution:
             if diff in prevMap:
                 return [idx, prevMap[diff]]
             prevMap[n] = idx
+        return
             
