@@ -1,3 +1,18 @@
+"""
+Input: root = [5,3,6,2,4,null,7], key = 3
+
+- Search on the BST for the node.val = 3
+- Check if the node.val = 3 has one child or two childs
+  - If it has one chiled, delete and connect the child node with the grand parent
+  - If it has two childs, seach for the min child (val = 2) and swap it with the node.val (= 3).
+
+Time Complexity: O(log(n)), Space : O(1) 
+
+
+"""
+
+
+
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -5,33 +20,25 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def minNode(self, curr: Optional[TreeNode]):
-        while curr and curr.left:
-            curr = curr.left
-        return curr
-
     def deleteNode(self, root: Optional[TreeNode], key: int) -> Optional[TreeNode]:
-        if root is None:
-            return root
+        if not root:
+            return None
         if key < root.val:
             root.left = self.deleteNode(root.left, key)
         elif key > root.val:
             root.right = self.deleteNode(root.right, key)
-        else: # key = root.val
-            if root.left is None:
+        else:
+            if not root.left:
                 return root.right
-            elif root.right is None:
+            elif not root.right:
                 return root.left
-
-            else: # root.left nd root.right are not None.
-                # Find the min node of the right sub tree of
-                # the current root (not initial root !!)
-                minTreeNode = self.minNode(root.right)
-                # Update the currrent removal root with 
-                # the minTreeNode val.
-                root.val = minTreeNode.val
-                # remove the minTreeNode
-                root.right = self.deleteNode(root.right, minTreeNode.val)
-        return root
-
-
+            else:
+                # find min node from right subtree:
+                cur = root.right
+                while cur and cur.left:
+                    cur = cur.left
+                root.val = cur.val
+                root.right = self.deleteNode(root.right, cur.val)
+        
+        return root        
+        
