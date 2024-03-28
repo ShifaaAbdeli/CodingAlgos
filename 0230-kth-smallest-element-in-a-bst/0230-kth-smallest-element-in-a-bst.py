@@ -6,32 +6,15 @@
 #         self.right = right
 class Solution:
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
-        ### Recursive approach ###
-        #out = []
-        #def helperInOrder(curr):
-            #if not curr:
-                #return curr
-
-            #helperInOrder(curr.left)
-            #out.append(curr.val)
-            #helperInOrder(curr.right)
-
-        #helperInOrder(root)
-        #return out[k-1]
-
-    ## Time complexity is O(log(n)). Space O(n)
-
-    ####### Iterative approach  ######
-        stack = []
-        curr = root
-        while curr or stack:
-            while curr:
-                stack.append(curr)
-                curr = curr.left
-            curr = stack.pop() # this is the k+1 smallest element 
-                               # pop from the stack
-            k -= 1
-            if k == 0:
-                return curr.val
-            curr = curr.right
-
+        arr = []
+        
+        def helper(root):
+            if not root:
+                return
+            
+            helper(root.left)
+            arr.append(root.val)
+            helper(root.right)
+        
+        helper(root)
+        return arr[k-1]
