@@ -38,4 +38,4 @@ class Solution:
                 return False
         return True
     
-## Time complexity: O(numCourses^2); Space: O(numCources)
+## Time complexity: O(numCourses+prerequisites); Space: O(numCources+prerequisites)
