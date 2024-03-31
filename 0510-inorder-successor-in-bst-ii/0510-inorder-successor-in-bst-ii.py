@@ -12,7 +12,7 @@ class Solution:
     def inorderSuccessor(self, node: 'Node') -> 'Optional[Node]':
         if node.right:
             cur = node.right
-            while cur and cur.left:
+            while cur.left:
                 cur = cur.left
             return cur
         else:
@@ -23,6 +23,6 @@ class Solution:
         
         return None
                 
-            
+## Time complexity: O(log(n)), Space: O(1)            
             
         
